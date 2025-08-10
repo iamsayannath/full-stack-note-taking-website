@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const Note = require('../models/Note');
+const Note = require('../models/Note.js');
+const mongoose = require('mongoose');
+
 
 // GET all notes for logged in user, optional search by title
 router.get('/', auth, async (req, res) => {
