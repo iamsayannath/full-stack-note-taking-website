@@ -62,12 +62,23 @@ router.put('/:id', auth, async (req, res) => {
 // DELETE
 router.delete('/:id', auth, async (req, res) => {
   try {
+    // Validate ID format
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: 'Invalid note ID' });
+    }
+
     const note = await Note.findById(req.params.id);
     if (!note) return res.status(404).json({ message: 'Note not found' });
-    if (String(note.user) !== String(req.user._id)) return res.status(403).json({ message: 'Forbidden' });
-    await note.remove();
+
+    if (String(note.user) !== String(req.user._id)) {
+      return res.status(403).json({ message: 'Forbidden' });
+    }
+
+    await note.deleteOne(); // instead of note.remove()
     res.json({ message: 'Note deleted' });
+
   } catch (err) {
+    console.error(err); // log error for debugging
     res.status(500).json({ message: 'Server error' });
   }
 });
