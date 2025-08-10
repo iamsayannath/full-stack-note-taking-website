@@ -13,7 +13,7 @@ const fetchJSON = async (url, opts = {}) => {
 
 export const authAPI = {
   register: (payload) => fetchJSON('/api/auth/register', { method: 'POST', body: JSON.stringify(payload) }),
-  login: (payload) => fetchJSON('/api/auth/login', { method: 'POST', body: JSON.stringify(payload) }),
+  login: (payload) => fetchJSON('/api/auth/login', { method: 'POST', credentials: 'include', body: JSON.stringify(payload) }),
   logout: () => fetchJSON('/api/auth/logout', { method: 'POST' }),
   me: () => fetchJSON('/api/auth/me'),
 };
