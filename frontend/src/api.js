@@ -1,3 +1,4 @@
+
 const BASE = 'https://full-stack-note-taking-website-backend.onrender.com';
 
 const fetchJSON = async (url, opts = {}) => {

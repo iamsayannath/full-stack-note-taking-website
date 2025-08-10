@@ -21,7 +21,6 @@ export const NotesProvider = ({ children }) => {
 
   useEffect(() => {
     fetchNotes();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const createNote = async (payload) => {
@@ -48,5 +47,4 @@ export const NotesProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useNotes = () => useContext(NotesContext);
