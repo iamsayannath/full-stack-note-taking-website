@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:5000';
+const BASE = 'https://full-stack-note-taking-website-backend.onrender.com';
 
 const fetchJSON = async (url, opts = {}) => {
   const res = await fetch(`${BASE}${url}`, {
